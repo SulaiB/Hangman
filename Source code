@@ -68,7 +68,7 @@ guesses = ""
 for i in range(len(word)):
     spaces.append("_")
     
-print("This is Hangman. Try to guess the word, before the man is hanged. You can only have 6 wrong guesses, and correct guesses will not be counted against you. Once you guess the full word, the game is over. To guess, enter a letter then press 'enter' \n")    
+print("This is Hangman. Try to guess the word, before the man is hanged. You can only have 6 wrong guesses, and correct guesses will not be counted against you. Once you guess the full word, the game is over. To guess, enter a letter then press 'enter'. \n You can also say 'Stop' to stop the game.")    
 print(HANGMANPICS[fails])
 print(spaces)
 print("\n")
@@ -78,7 +78,10 @@ while fails < 6:
         break
     else:
         guess = input("What is your guess?")
-        if guess not in  word:
+        if guess == "stop":
+          print("OK, See you later!")
+          fails = 7
+        elif guess not in  word:
             #display hangman
             print(spaces)
             fails += 1
@@ -95,5 +98,6 @@ while fails < 6:
             print(HANGMANPICS[fails])
             print(wrong_letters)
             print("\n")
+        
 if fails == 6:
   print("Sorry, but he was hung :( . Try Again!")
